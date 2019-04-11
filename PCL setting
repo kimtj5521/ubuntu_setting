@@ -1,0 +1,30 @@
+아래 링크에서 pcl source code를 다운로드
+
+git clone https://github.com/PointCloudLibrary/pcl.git
+----------------------------------
+
+PCL의 qt5 경로를 설정해주기 위해서 cmake file에서 prefix 를 설정한다. 
+/pcl/cmake/pcl_find_qt5.cmake 를 열고 최 상단에 아래의 setting을 추가
+
+set(CMAKE_PREFIX_PATH /home/tjk/Qt5.8.0/5.8/gcc_64/lib/cmake)
+
+----------------------------------
+위 내용은 현재 pcl 1.8.0 master branch의 경우 pcl_find_qt5.cmake 파일이 삭제되었음 (2019.02.20 기준)
+따라서 위 설정은 pass
+----------------------------------
+
+이제 build 폴더를 만들고 빌드 후 설치한다.
+
+mkdir build
+cd build
+cmake -D BUILD_visualization=ON ..
+make -j8
+make install
+
+------------------------------
+기본적으로 cmake .. 을 해버리면 visualization이 disabled manually 로 되어 build가 안되는 경우가 있다.
+(난 항상 그랬지만..)
+그래서 cmake 옵션으로 ON 설정을 추가한다.
+
+------------------------------
+VTK 를 안쓰면 cmake .. 으로 해도 된다.

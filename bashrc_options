@@ -1,0 +1,42 @@
+
+# for Qt5
+export PATH=/home/tjkim/Qt5.8.0/5.8/gcc_64/bin/:/home/tjkim/Qt5.8.0/Tools/QtCreator/bin/:$PATH
+
+# for CUDA
+export PATH=$PATH:/usr/local/cuda-9.0/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64
+
+# Load ROS Kinetic Setup
+source /opt/ros/kinetic/setup.bash
+source ~/catkin_ws/devel/setup.bash
+
+# Configure ROS alias commnad 
+alias cm='cd ~/catkin_ws && catkin_make'
+alias cs='cd ~/catkin_ws/src'
+alias cw='cd ~/catkin_ws'
+
+# Configure ROS Network
+# export ROS_LOCALIP=xxx.xxx.xxx.xxx
+# export ROS_MASTER_URI=http://${ROS_LOCALIP}:11311
+
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/tjkim/Qt5.8.0/5.8/gcc_64/lib/
+
+# google cartographer setup
+source /home/tjkim/carto_ws/install_isolated/setup.bash
+
+# For LeGO-LOAM
+# export MALLOC_CHECK_=0
+
+# For Carla
+export UE4_ROOT=~/UnrealEngine_4.19
+
+# For V2X Wireshark
+export Qt5Core_DIR=~/Qt5.8.0/5.8/gcc_64/lib/cmake/Qt5Core
+export Qt5LinguistTools_DIR=~/Qt5.8.0/5.8/gcc_64/lib/cmake/Qt5LinguistTools
+export Qt5Multimedia_DIR=~/Qt5.8.0/5.8/gcc_64/lib/cmake/Qt5Multimedia
+export Qt5PrintSupport_DIR=~/Qt5.8.0/5.8/gcc_64/lib/cmake/Qt5PrintSupport
+export Qt5Svg_DIR=~/Qt5.8.0/5.8/gcc_64/lib/cmake/Qt5Svg
+
+# For LCM
+export LCM_DEFAULT_URL=udpm://239.255.76.67:7667?ttl=1

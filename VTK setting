@@ -1,0 +1,20 @@
+cd build
+
+cmake -D VTK_QT_VERSION:STRING=5 \
+-D QT_QMAKE_EXECUTABLE:PATH=/home/tjk/Qt5.8.0/5.8/gcc_64/bin/qmake \
+-D VTK_Group_Qt:BOOL=ON \
+-D CMAKE_PREFIX_PATH:PATH=/home/tjk/Qt5.8.0/5.8/gcc_64/lib/cmake \
+-D BUILD_SHARED_LIBS:BOOL=ON ..
+
+VTK cmake 옵션 이다. PATH에 대해서는 내가 qt 설치한 경로를 넣어줘야 한다. 
+sudo 로 qt를 설치하면 보통 opt/ 폴더에 설치되어서 저렇게 쓴 것이라 한다. 
+
+qt5 를 .run 파일로 설치하게 되면 어디로 설치되는지 확인필요
+
+ps. vtk와 qt를 주로 작업하니까 QVTKWidget을 qt designer에서 사용할 일이 많다.
+	libQVTKWidgetPlugin.so 라이브러리 파일은 vtk/build/lib 밑에 있다.
+	복사해서 Qt/Tools/QtCreator/lib/Qt/plugins/designer 폴더에 붙여넣기 해둔다.
+
+ps 출처: http://4263.tistory.com/entry/VTK-설치
+
+

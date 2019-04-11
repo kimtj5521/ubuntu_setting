@@ -1,0 +1,1 @@
+sudo apt-get install cmake-curses-gui libqhull* libusb-dev libpcap-dev libglew-dev doxygen libgcrypt-dev glib2.0 flex libcap-dev libc-ares-dev gnutls-dev libkrb5-dev libnghttp2-dev libmaxminddb-dev libssh-dev libnl-3-dev libnl-genl-3-dev libnl-route-3-dev libsbc-dev libsmi-dev libsnappy-dev bison autoconf xsltproc asciidoctor libspandsp-dev

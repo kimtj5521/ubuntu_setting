@@ -1,0 +1,66 @@
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+-D CMAKE_INSTALL_PREFIX=/usr/local \
+-D WITH_TBB=OFF \
+-D WITH_IPP=OFF \
+-D WITH_1394=OFF \
+-D BUILD_WITH_DEBUG_INFO=OFF \
+-D BUILD_DOCS=OFF \
+-D INSTALL_C_EXAMPLES=OFF \
+-D INSTALL_PYTHON_EXAMPLES=OFF \
+-D BUILD_EXAMPLES=OFF \
+-D BUILD_TESTS=OFF \
+-D BUILD_PERF_TESTS=OFF \
+-D WITH_QT=ON \
+-D WITH_OPENGL=ON \
+-D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.0/modules \
+-D WITH_V4L=ON  \
+-D BUILD_NEW_PYTHON_SUPPORT=ON \
+-D WITH_FFMPEG=ON \
+-D WITH_VTK=ON ../
+-----------------------------------------
+이 아래는 보통은 없는데 에러에 대비한 옵션 (안될수도있음)
+-D BUILD_LIBPROTOBUF_FROM_SOURCES=OFF \
+-D WITH_opencv_cvv=OFF \
+-D ENABLE_PRECOMPILED_HEADERS=OFF \
+-D ENABLE_CXX11=ON ../
+-----------------------------------------
+-D WITH_VTK=ON 옵션은 VTK를 설치했을때 쓰는 옵션으로 opencv_viz를 쓸수 있게 된다.
+-----------------------------------------
+
+nvidia graphic card가 있어서 cuda 를 설치했을 경우 아래 옵션을 추가한다.
+-D WITH_CUDA=ON \
+-D WITH_TBB=ON \
+-D WITH_GTK=ON \
+-D CUDA_ARCH_BIN=6.1 ../     <- 이 옵션의 경우 cuda 버전에 맞춰서 숫자를 써야한다. 6.1은 cuda 10.0의 경우 이다.
+
+cuda 10.0을 설치할 경우 opencv 3.3.0은 cmake가 실패했었음. 3.4.4 는 cmake 성공했었음.
+
+-----------------------------------------
+
+$ python3
+Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so: undefined symbol: PyCObject_Type
+>>>
+python3에서 해당 라이브러리를 못찾고 확인이 안되는 경우, 아래와 같은 사항으로 조치하면 해결이 됩니다.
+
+$ cd /usr/local/lib/python3.5/dist-packages
+$ sudo mv /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so.old
+$ ls -al /opt/ros/kinetic/lib/python2.7/dist-packages
+
+  cv2.cpython-35m-x86_64-linux-gnu.so <- 이게 확인이 되어야 한다. 
+
+$ sudo ln -s `pwd`/cv2.cpython-35m-x86_64-linux-gnu.so `pwd`/cv2.so
+$ ls -al
+
+  cv2.so -> /usr/local/lib/python3.5/dist-packages/cv2.cpython-35m-x86_64-linux-gnu.so
+  이렇게 심볼릭 링크가 된 것을 확인해야 한다.
+
+----------------------------------------
+
+opencv 3.4.5 기준으로 python3 용 cv2.so 파일 위치가 달랐다.
+$ cd /usr/local/lib/python3.5/dist-packages/cv2/python-3.5 <- 여기에 있었음

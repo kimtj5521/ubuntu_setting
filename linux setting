@@ -1,0 +1,28 @@
+After installed Ubuntu 16.04
+
+update server change - mirror kakao
+hangul setting (fcitx)
+chrome
+terminator
+vim setting (ctags)
+ROS-Kineitc-desktop-full
+cartographer
+package install
+
+Qt5.12.0
+VTK-7.1
+PCL-1.8.0
+OpenCV 3.4.5
+
+kazam
+
+--------------------
+VeloView-3.5.0-linux-64bit
+Velodyne_data_sample (pcap file들)
+gtsam 4 (3.2.1)
+lego-loam
+
+--------------------
+
+graphic driver (optional)
+lcm-1.3.0 (optional)

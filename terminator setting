@@ -1,0 +1,2 @@
+gsettings set org.gnome.desktop.default-applications.terminal exec '/usr/bin/terminator'
+메뉴바에 launcher 고정 시키는 명령어

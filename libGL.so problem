@@ -1,0 +1,21 @@
+nvidia graphic driver 를 설치하고 나면 
+
+libGL.so 파일의 link가 기존 mesa/libgl 로 남아있어 link 자체가 깨져 
+다른 프로그램 컴파일 시 참조가 안되 error 가 나는 경우가 있다.
+
+아래 명령어로 link를 다시 이어 주면 된다.
+
+sudo rm /usr/lib/x86_64-linux-gnu/libGL.so
+sudo ln -s libGLX_nvidia.so.0 /usr/lib/x86_64-linux-gnu/libGL.so
+
+여기서 두번째 줄은 
+sudo ln -s /usr/lib/libGL.so.1 /usr/lib/x86_64-linux-gnu/libGL.so
+
+이렇게 할 수도 있다.
+
+/usr/lib/x86_64-linux-gnu 폴더로 가서 
+
+ls -al libGL* 
+으로 어떻게 link 되어 있는지 확인 해보고 선택하면 된다.
+
+(nvidia GLX를 쓰고 싶어서 본인은 첫번째 명령어로 하였다.)
