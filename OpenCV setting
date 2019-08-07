@@ -35,7 +35,9 @@ nvidia graphic card가 있어서 cuda 를 설치했을 경우 아래 옵션을 �
 TITAN RTX의 경우 7.5이다.
 
 cuda 10.0을 설치할 경우 opencv 3.3.0은 cmake가 실패했었음. 3.4.4 는 cmake 성공했었음.
-
+-----------------------------------------
+-D BUILD_opencv_cudacodec=OFF \ <- 이 옵션은 CUDA 10.0 이상을 설치했을때 nvcuvid 관련 error를 막아주는 옵션이다.
+실제로 NVIDIA Video Decoder (NVCUVID)는 CUDA 10에서 더 이상 사용되지 않기 때문이다.
 -----------------------------------------
 
 $ python3
