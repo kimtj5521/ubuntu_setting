@@ -31,7 +31,8 @@ nvidia graphic card가 있어서 cuda 를 설치했을 경우 아래 옵션을 �
 -D WITH_CUDA=ON \
 -D WITH_TBB=ON \
 -D WITH_GTK=ON \
--D CUDA_ARCH_BIN=6.1 ../     <- 이 옵션의 경우 cuda 버전에 맞춰서 숫자를 써야한다. 6.1은 cuda 10.0의 경우 이다.
+-D CUDA_ARCH_BIN=6.1 ../     <- 이 옵션의 경우 gpu의 compute capability에 맞춰서 숫자를 써야한다. gtx 1080의 경우 6.1이다.
+TITAN RTX의 경우 7.5이다.
 
 cuda 10.0을 설치할 경우 opencv 3.3.0은 cmake가 실패했었음. 3.4.4 는 cmake 성공했었음.
 
