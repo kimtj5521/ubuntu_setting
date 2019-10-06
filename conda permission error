@@ -1,0 +1,7 @@
+Anaconda 설치 후 conda update conda가 안될 수 있다. (permission denied 되면서)
+
+이건 /home/user/anaconda3 or /home/user/anaconda2 폴더의 수정 권한이 해당 user 에게 없기 때문이다.
+
+sudo chown -R user /home/user/anaconda3
+
+위 명령으로 수정 가능하도록 폴더 권한을 변경하면 update가 가능해진다.
